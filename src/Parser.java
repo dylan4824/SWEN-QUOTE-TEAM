@@ -62,7 +62,7 @@ public class Parser {
 			String[] game = s.nextLine().toString().split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			year.add(processLine(game));
 		}
-
+		years.add(year);
 	}
 
 	private Match processLine(String[] game) {
