@@ -20,6 +20,9 @@ public class Parser {
 		Parser p = new Parser(args);
 	}
 
+	public ArrayList<ArrayList<Match>> getYears(){
+		return years;
+	}
 	public Parser(String[] args) {
 		for(String arg : args){
 			year = Integer.parseInt(arg.substring(0, 4));
