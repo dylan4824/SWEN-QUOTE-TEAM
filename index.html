@@ -4,6 +4,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
    <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!--<script src="jquery-2.1.4.min.js" charset="utf-8"></script>-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
     <body>
@@ -72,15 +73,46 @@ var tables = ["2008-Table1.csv",
 	      "2013-Table1.csv"
 	     ]
 var tableData = []
+var Byes = []
 readData()
 
 function readData (){
-    for(var i = 0; i < tables.length; i++){
-	d3.csv("2008-Table1.csv", function(d) {
-	    console.log(d[24])
-	})
-    }
-    console.log(tableData[1])
+
+   //for(var i = 0; i < tables.length; i++){
+   //Remove all byes and place them into byes here
+	tableData = d3.csv( "2011-Table1.csv", function(d) {
+	 //console.log(d[1])
+	 return{
+	  Round: d.Round,
+	  Date: d.Date,
+	  Year: tables[3].replace(/(^\d+)(.+$)/i,'$1'),
+	  HomeTeam: d['Home Team'],
+	  AwayTeam: d['Away Team'],
+	  HomeScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0],
+	  AwayScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1],
+	  Overtime: !((typeof d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[3]) === 'undefined'),
+	  Venue: d.Venue,
+	  Winner: winner(d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1], d['Home Team'], d['Away Team'])
+	 };
+    },function(error, table){
+    assign(table)
+    console.log(tableData)
+  });
+
+ //}
+    
+ }
+ 
+ 
+ function assign(table){
+  tableData = [table]
+ }
+function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
+  if(HomeScore > AwayScore){
+    return HomeTeam 
+  }
+  return AwayTeam
+
 }
 
 function addMenuItems(){
