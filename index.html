@@ -1,22 +1,154 @@
 <html>
-  <head><title>The Name of a Thing</title></head>
-  <body>
+  <head>
+    <title>The Name of a Thing</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <!--<script src="jquery-2.1.4.min.js" charset="utf-8"></script>-->
-    <script>
-   // console.log("hello")
-      var tables = ["2008-Table1.csv",
-      "2009-Table1.csv",
-      "2010-Table1.csv",
-      "2011-Table1.csv",
-      "2012-Table1.csv",
-      "2013-Table1.csv"
-		   ]
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  </head>
+    <body>
+      <div class="dropdown">
+	<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+	  Round
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Season
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Time
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Home Team
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Away Team
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Home Score
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+		Away Score
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Venue
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Overtime
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+	<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Wins
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+			<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
+			  Losses
+	  <span class="caret"</span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+		  <li role="presentation" class="divider"></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>    
+		</ul>
+		<!------------------------------------->
+		
+		
+</div>
+      
+	<script>
+    console.log("hello")
+var tables = ["2008-Table1.csv",
+	      "2009-Table1.csv",
+	      "2010-Table1.csv",
+	      "2011-Table1.csv",
+	      "2012-Table1.csv",
+	      "2013-Table1.csv"
+	     ]
 var tableData = []
 var Byes = []
 readData()
 
 function readData (){
+
    //for(var i = 0; i < tables.length; i++){
    //Remove all byes and place them into byes here
 	tableData = d3.csv( "2011-Table1.csv", function(d) {
@@ -51,7 +183,8 @@ function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
     return HomeTeam 
   }
   return AwayTeam
+
 }
-    </script>
-  </body>
+	  </script>
+    </body>
 </html>
