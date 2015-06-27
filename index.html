@@ -1,0 +1,29 @@
+<html>
+  <head><title>The Name of a Thing</title></head>
+  <body>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <!--<script src="jquery-2.1.4.min.js" charset="utf-8"></script>-->
+    <script>
+    console.log("hello")
+      var tables = ["2008-Table1.csv",
+      "2009-Table1.csv",
+      "2010-Table1.csv",
+      "2011-Table1.csv",
+      "2012-Table1.csv",
+      "2013-Table1.csv"
+		   ]
+var tableData = []
+readData()
+
+function readData (){
+    for(var i = 0; i < tables.length; i++){
+	d3.csv("2008-Table1.csv", function(d) {
+	    console.log(d[24])
+    })
+    }
+    console.log(tableData[1])
+    
+}
+    </script>
+  </body>
+</html>
