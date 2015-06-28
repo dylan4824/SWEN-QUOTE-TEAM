@@ -144,7 +144,7 @@
 	     ]
 
 	var tableData = new Array()
-
+  var colours = ["#000000", "#002366", "#FFD700", "#008080","#FFF8E7", "#800080", "#FF0000", "#FF7F00", "#00FF00","#6699CC"]
 	var windowSize = window;
 	var windWidth = windowSize.innerWidth;
 	var windHeight = windowSize.innerHeight;
@@ -373,7 +373,6 @@ function removeArrayElem(array, elem){
 }
 
 function disableRound(value,id,elem){
-  console.log(value);
   for (var i = 0; i < tableData.length; i++) {
     for(var k = 0; k < tableData[1].length; k++){
 
@@ -428,7 +427,6 @@ function disableHomeTeam(value,id,elem){
       if(tableData[i][k].HomeTeam == value){
         if((tableData[i][k].Disabled.length > 1) && !(tableData[i][k].Disabled.indexOf(id) == -1)){
             for (var e = 0; e < tableData[i][k].Disabled.length; e++) {
-              console.log("in removal");
               if(tableData[i][k].Disabled[e] == id){
                 removeArrayElem(tableData[i][k].Disabled,id)
               }
@@ -456,7 +454,6 @@ function disableAwayTeam(value){
       if(tableData[i][k].AwayTeam == value){
         if((tableData[i][k].Disabled.length > 1) && !(tableData[i][k].Disabled.indexOf(id) == -1)){
             for (var e = 0; e < tableData[i][k].Disabled.length; e++) {
-              console.log("in removal");
               if(tableData[i][k].Disabled[e] == id){
                 removeArrayElem(tableData[i][k].Disabled,id)
               }
@@ -476,7 +473,32 @@ function disableAwayTeam(value){
   }
 }
 
-function doOvertime(value){}
+function doOvertime(value){
+  for (var i = 0; i < tableData.length; i++) {
+    for(var k = 0; k < tableData[1].length; k++){
+
+      if(tableData[i][k].OverTime == value){
+        if((tableData[i][k].Disabled.length > 1) && !(tableData[i][k].Disabled.indexOf(id) == -1)){
+            for (var e = 0; e < tableData[i][k].Disabled.length; e++) {
+              if(tableData[i][k].Disabled[e] == id){
+                removeArrayElem(tableData[i][k].Disabled,id)
+              }
+            }
+        }
+        else if((tableData[i][k].Disabled.length == 1) && (tableData[i][k].Disabled[0] == [id])){
+          elem.attr("class",null)
+          removeArrayElem(tableData[i][k].Disabled,id)
+        }
+        else{
+          elem.attr("class","disabled")
+          tableData[i][k].Disabled.push(id)
+        }
+
+      }
+    }
+  }
+
+}
 
 	  </script>
     </body>
