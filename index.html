@@ -170,41 +170,42 @@ var tables = ["2008-Table1.csv",
 	      "2012-Table1.csv",
 	      "2013-Table1.csv"
 	     ]
-var tableData = []
-var Byes = []
+var tableData = new Array()
 readData()
 
-function readData (){
+function readData(){
+	for(var i = 0; i < tables.length; i++){
+		readYear(i)
+	}
+}
 
-   //for(var i = 0; i < tables.length; i++){
-   //Remove all byes and place them into byes here
-	tableData = d3.csv( "2011-Table1.csv", function(d) {
-	 //console.log(d[1])
-	 return{
-	  Round: d.Round,
-	  Date: d.Date,
-	  Year: tables[3].replace(/(^\d+)(.+$)/i,'$1'),
-	  HomeTeam: d['Home Team'],
-	  AwayTeam: d['Away Team'],
-	  HomeScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0],
-	  AwayScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1],
-	  Overtime: !((typeof d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[3]) === 'undefined'),
-	  Venue: d.Venue,
-	  Winner: winner(d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1], d['Home Team'], d['Away Team'])
-	 };
+function readYear (i){
+	d3.csv( tables[i], function(d) {
+		if(d.Score != ""){
+			return{
+				Round: d.Round,
+				Date: d.Date,
+				Year: tables[i].replace(/(^\d+)(.+$)/i,'$1'),
+				HomeTeam: d['Home Team'],
+				AwayTeam: d['Away Team'],
+				HomeScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0],
+				AwayScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1],
+				Overtime: ((d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[3]) != null),
+				Venue: d.Venue,
+				Winner: winner(d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1], d['Home Team'], d['Away Team'])
+			};
+		}
     },function(error, table){
-    assign(table)
-    console.log(tableData)
-  });
-
- //}
-
- }
-
+		//console.log(table)
+		assign(table)
+		//console.log(tableData)
+	});
+}
 
  function assign(table){
-  tableData = [table]
+  tableData.push(table)
  }
+
 function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
   if(HomeScore > AwayScore){
     return HomeTeam
