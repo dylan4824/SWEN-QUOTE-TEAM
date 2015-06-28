@@ -163,7 +163,7 @@
 	</table>
 
 	<script>
-var tables = ["2008-Table1.csv",
+	var tables = ["2008-Table1.csv",
 	      "2009-Table1.csv",
 	      "2010-Table1.csv",
 	      "2011-Table1.csv",
@@ -171,10 +171,15 @@ var tables = ["2008-Table1.csv",
 	      "2013-Table1.csv"
 	     ]
 
-var tableData = new Array()
-
-
-readData()
+	var tableData = new Array()
+	
+	readData()
+	setTimeout(doAllTheThings, 0);
+	
+	function doAllTheThings(){
+		console.log(tableData)
+	}
+	
 
 function readData(){
 	for(var i = 0; i < tables.length; i++){
