@@ -154,13 +154,13 @@
 	<script>
 	
 	<!-------------------------- Graph Stuff ---------------------------------> 
+	//Was in the process of converting this from an example, but due to time constraints is unfinished.
 	var	margin = {top: 30, right: 40, bottom: 30, left: 50},
 	width = 600 - margin.left - margin.right,
 	height = 270 - margin.top - margin.bottom;
 
-	var	parseDate = d3.time.format("%d-%b-%y").parse;
 
-	var	x = d3.time.scale().range([0, width]);
+	var	x = d3.scale.linear().range([0, width]);
 	var	y = d3.scale.linear().range([height, 0]);
 
 	var	xAxis = d3.svg.axis().scale(x)
@@ -168,7 +168,7 @@
 
 	var	yAxis = d3.svg.axis().scale(y)
 		.orient("left").ticks(5);
-
+<!-- 
 	var	valueline = d3.svg.line()
 		.x(function(d) { return x(d.date); })
 		.y(function(d) { return y(d.close); });
@@ -176,7 +176,7 @@
 	var	valueline2 = d3.svg.line()
 		.x(function(d) { return x(d.date); })
 		.y(function(d) { return y(d.open); });
-  
+   -->
 	var	svg = d3.select("body")
 		.append("svg")
 			.attr("width", width + margin.left + margin.right)
@@ -187,9 +187,25 @@
 	
 	function processGraph(idx){
 		//0=Win, 1=Overtime, 2=total Score
-		x.domain(d3.extent(data, function(d) { return d.date; }));
-		y.domain([0, d3.max(data, function(d) { return Math.max(d.close, d.open); })]);
+		x.domain(d3.extent(tables, function(d) { return d.replace(/(^\d+)(.+$)/i,'$1') }));
+		y.domain([0, d3.max(stats, function(d) { 
+			var x = 0
+			for(var j = 0; j < d.length; j++){
+				for(var k = 0; k < d[j].length; k++){
+					x = max(d[j][k][idx], x)
+				}
+			}
+			return x
+		})]);
 
+		for(var i = 0; i < teams.length; i++){
+			svg.append("path")
+				.attr("class", "line")
+				.attr("d", getTeamLine(teams[i]));
+		
+		}
+		
+		
 		svg.append("path")		// Add the valueline path.
 			.attr("class", "line")
 			.attr("d", valueline(data));
@@ -225,7 +241,9 @@
 	
 	}
 	
-	
+	function getTeamLine(teamName){
+		
+	}
 	
 	
 	
