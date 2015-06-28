@@ -186,7 +186,7 @@ function readYear (i){
 				Overtime:  d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[3] != null,
 				Venue: d.Venue,
 				Winner: winner(d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1], d['Home Team'], d['Away Team']),
-        Disabled: false
+        Disabled: []
 			};
 		}
     },function(error, table){
@@ -265,11 +265,6 @@ function readYear (i){
 
 }
 
-
-
-
-
-
 function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
   if(HomeScore > AwayScore){
     return HomeTeam
@@ -329,13 +324,6 @@ function drawImg(width, height, x, y, imgLink){
 function disableElem(id){
   var element = d3.select("#"+id)
   console.log(id);
-  if(element.attr("class") == null){
-  element.attr("class","disabled")
-  }
-  else {
-    element.attr("class",null)
-  }
-
   var type;
 
   switch (id[4]){   //the key for each type
@@ -360,16 +348,16 @@ function disableElem(id){
 
   switch (type){
     case "Round":
-    disableRound(value)
+    disableRound(value,id,element)
     break;
     case "Season":
-    disableSeason(value)
+    disableSeason(value,id,element)
     break;
     case "HomeTeam":
-    disableHomeTeam(value)
+    disableHomeTeam(value,id,element)
     break;
     case "AwayTeam":
-    disableAwayTeam(value)
+    disableAwayTeam(value,id,element)
     break;
     default:
     doOvertime(value)
@@ -380,18 +368,31 @@ function disableElem(id){
   //console.log(element.attr("class"))
 }
 
-function disableRound(value){
+function removeArrayElem(array, elem){
+  array.splice(array.indexOf(elem),1)
+}
+
+function disableRound(value,id,elem){
   console.log(value);
   for (var i = 0; i < tableData.length; i++) {
     for(var k = 0; k < tableData[1].length; k++){
 
       if(tableData[i][k].Round == value){
-
-        if(tableData[i][k].Disabled == true){
-          tableData[i][k].Disabled = false
+        if((tableData[i][k].Disabled.length > 1) && !(tableData[i][k].Disabled.indexOf(id) == -1)){
+            for (var e = 0; e < tableData[i][k].Disabled.length; e++) {
+              console.log("in removal");
+              if(tableData[i][k].Disabled[e] == id){
+                removeArrayElem(tableData[i][k].Disabled,id)
+              }
+            }
+        }
+        else if((tableData[i][k].Disabled.length == 1) && (tableData[i][k].Disabled[0] == [id])){
+          elem.attr("class",null)
+          removeArrayElem(tableData[i][k].Disabled,id)
         }
         else{
-          tableData[i][k].Disabled = true
+          elem.attr("class","disabled")
+          tableData[i][k].Disabled.push(id)
         }
 
       }
@@ -399,14 +400,81 @@ function disableRound(value){
   }
 }
 
-function disableSeason(value){
-  console.log(value - 2008);
+function disableSeason(value,id,elem){
+  value = value - 2008;
+  for(var i = 0; i < tableData[value].length;i++){
+      if((tableData[value][i].Disabled.length > 1) && !(tableData[value][i].Disabled.indexOf(id) == -1)){
+          for (var e = 0; i < tableData[value][i].Disabled.length; e++) {
+            if(tableData[value][i].Disabled[e] == id){
+                removeArrayElem(tableData[i][k].Disabled,id)
+            }
+          }
+      }
+      else if((tableData[value][i].Disabled.length == 1) && (tableData[value][i].Disabled[0] == [id])){
+        elem.attr("class",null)
+        removeArrayElem(tableData[value][i].Disabled,id)
+      }
+      else{
+        elem.attr("class","disabled")
+        tableData[value][i].Disabled.push(id)
+      }
+  }
+}
+
+function disableHomeTeam(value,id,elem){
+  for (var i = 0; i < tableData.length; i++) {
+    for(var k = 0; k < tableData[1].length; k++){
+
+      if(tableData[i][k].HomeTeam == value){
+        if((tableData[i][k].Disabled.length > 1) && !(tableData[i][k].Disabled.indexOf(id) == -1)){
+            for (var e = 0; e < tableData[i][k].Disabled.length; e++) {
+              console.log("in removal");
+              if(tableData[i][k].Disabled[e] == id){
+                removeArrayElem(tableData[i][k].Disabled,id)
+              }
+            }
+        }
+        else if((tableData[i][k].Disabled.length == 1) && (tableData[i][k].Disabled[0] == [id])){
+          elem.attr("class",null)
+          removeArrayElem(tableData[i][k].Disabled,id)
+        }
+        else{
+          elem.attr("class","disabled")
+          tableData[i][k].Disabled.push(id)
+        }
+
+      }
+    }
+  }
 
 }
 
-function disableHomeTeam(value){}
+function disableAwayTeam(value){
+  for (var i = 0; i < tableData.length; i++) {
+    for(var k = 0; k < tableData[1].length; k++){
 
-function disableAwayTeam(value){}
+      if(tableData[i][k].AwayTeam == value){
+        if((tableData[i][k].Disabled.length > 1) && !(tableData[i][k].Disabled.indexOf(id) == -1)){
+            for (var e = 0; e < tableData[i][k].Disabled.length; e++) {
+              console.log("in removal");
+              if(tableData[i][k].Disabled[e] == id){
+                removeArrayElem(tableData[i][k].Disabled,id)
+              }
+            }
+        }
+        else if((tableData[i][k].Disabled.length == 1) && (tableData[i][k].Disabled[0] == [id])){
+          elem.attr("class",null)
+          removeArrayElem(tableData[i][k].Disabled,id)
+        }
+        else{
+          elem.attr("class","disabled")
+          tableData[i][k].Disabled.push(id)
+        }
+
+      }
+    }
+  }
+}
 
 function doOvertime(value){}
 
