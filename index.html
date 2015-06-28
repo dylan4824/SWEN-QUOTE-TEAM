@@ -172,7 +172,14 @@
 	     ]
 
 	var tableData = new Array()
+	var windowSize = window;
+	var windWidth = windowSize.innerWidth;
+	var windHeight = windowSize.innerHeight;
+	var teams = ["Adelaide Thunderbirds", "Melbourne Vixens", "New South Wales Swifts",
+				"Queensland Firebirds", "West Coast Fever", "Canterbury Tactix", "Central Pulse", "Northern Mystics", "Southern Steel", "Waikato Bay of Plenty Magic"];
+	var canvas = initialiseCanvas();
 	
+	drawGraph(teams);
 	readData()
 	setTimeout(doAllTheThings, 0);
 	
@@ -250,9 +257,7 @@ function contains (loc,table){
   return false
 }
 */
-var windowSize = window;
-var windWidth = windowSize.innerWidth;
-var windHeight = windowSize.innerHeight;
+
 
 function initialiseCanvas() {
 
@@ -261,9 +266,6 @@ function initialiseCanvas() {
 		.attr("width", windWidth*0.8)
 		.attr("height", windHeight*0.6);
 }
-
-var teams = ["Adelaide Thunderbirds", "Melbourne Vixens", "New South Wales Swifts",
-				"Queensland Firebirds", "West Coast Fever", "Canterbury Tactix", "Central Pulse", "Northern Mystics", "Southern Steel", "Waikato Bay of Plenty Magic"];
 
 function drawGraph(teamName) {
 	drawLine()
@@ -276,7 +278,7 @@ function getTotalScores(data) {
 }
 
 function drawRect(width, height, x, y, color){
-	return canvas.append*("rect")
+	return canvas.append("rect")
 		.attr("width", width)
 		.attr("height", height)
 		.attr("x", x)
@@ -285,7 +287,7 @@ function drawRect(width, height, x, y, color){
 }
 
 function drawLine(x1, x2, y1, y2, color){
-	return canvas.append*("line")
+	return canvas.append("line")
 		.attr("x1", x1)
 		.attr("x2", x2)
 		.attr("y1", y1)
@@ -302,10 +304,6 @@ function drawImg(width, height, x, y, imgLink){
 		.attr("xlink:href", imgLink);
 }
 
-
-
-var canvas = initialiseCanvas();
-drawGraph(teams);
 
 
 	  </script>
