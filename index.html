@@ -156,7 +156,10 @@
 	setTimeout(doAllTheThings, 0);
   function doAllTheThings(){
 		console.log(tableData)
-		var stats = mapStatistics(2008,0)
+		var stats = []
+		for(var i = 0; i < tableData.length; i++){
+			stats[i] = mapStatistics(i)
+		}
 		console.log(stats)
 	}
 
@@ -191,7 +194,7 @@ function readYear (i){
 	});
 }
 
- function mapStatistics(year, index){
+ function mapStatistics(index){
 	var stat = {
 		'Adelaide Thunderbirds': {
 			Wins: 0,
@@ -243,12 +246,14 @@ function readYear (i){
 			Overtimes : 0,
 			TotalScore: 0
 		}
-	}	
+	}
+
 	for(var i = 0; i < tableData[index].length; i++){
-		if(tableData[index][i].Winner != null)
-			stat[tableData[index][i].Winner].Wins += 1; 
-		stat[tableData[index][i].HomeTeam].TotalScore += tableData[index][i].HomeScore
-		stat[tableData[index][i].AwayTeam].TotalScore += tableData[index][i].AwayScore
+		if(tableData[index][i].Winner != null){
+			stat[tableData[index][i].Winner].Wins += 1;
+		}
+		stat[tableData[index][i].HomeTeam].TotalScore = parseInt(stat[tableData[index][i].HomeTeam].TotalScore) + parseInt(tableData[index][i].HomeScore)
+		stat[tableData[index][i].AwayTeam].TotalScore = parseInt(stat[tableData[index][i].AwayTeam].TotalScore) + parseInt(tableData[index][i].AwayScore)
 		if(tableData[index].Overtime){
 			stat[tableData[index][i].HomeTeam].Overtimes += 1
 			stat[tableData[index][i].AwayTeam].Overtimes += 1
