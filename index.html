@@ -185,6 +185,8 @@
 	
 	function doAllTheThings(){
 		console.log(tableData)
+		var stats = mapStatistics(2008,0)
+		console.log(stats)
 	}
 	
 
@@ -213,17 +215,82 @@ function readYear (i){
 		}
     },function(error, table){
 		//console.log(table)
-		assign(table)
+		tableData.push(table)
 		//console.log(tableData)
 	});
 }
 
- function assign(table){
-  tableData.push(table)
-  if(tableData.length == 6){
-//    allLocations()
-  }
- }
+ function mapStatistics(year, index){
+	var stat = {
+		'Adelaide Thunderbirds': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		}, 
+		'Melbourne Vixens': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		}, 
+		'New South Wales Swifts': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		},	
+		'Queensland Firebirds': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		},
+		'West Coast Fever': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		},
+		'Canterbury Tactix': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		}, 
+		'Central Pulse': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		},
+		'Northern Mystics': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		}, 
+		'Southern Steel': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		},
+		'Waikato Bay of Plenty Magic': {
+			Wins: 0,
+			Overtimes : 0,
+			TotalScore: 0
+		}
+	}	
+	for(var i = 0; i < tableData[index].length; i++){
+		if(tableData[index][i].Winner != null)
+			stat[tableData[index][i].Winner].Wins += 1; 
+		stat[tableData[index][i].HomeTeam].TotalScore += tableData[index][i].HomeScore
+		stat[tableData[index][i].AwayTeam].TotalScore += tableData[index][i].AwayScore
+		if(tableData[index].Overtime){
+			stat[tableData[index][i].HomeTeam].Overtimes += 1
+			stat[tableData[index][i].AwayTeam].Overtimes += 1
+		}
+	}
+	return stat;
+	
+}
+
+		
+ 
+ 
+ 
 
 function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
   if(HomeScore > AwayScore){
