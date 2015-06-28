@@ -218,6 +218,63 @@ function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
 
 }
 
+var windowSize = window;
+var windWidth = windowSize.innerWidth;
+var windHeight = windowSize.innerHeight;
+
+function initialiseCanvas() {
+
+	return d3.select("body")
+		.append("svg")
+		.attr("width", windWidth*0.8)
+		.attr("height", windHeight*0.6);
+}
+
+var teams = ["Adelaide Thunderbirds", "Melbourne Vixens", "New South Wales Swifts", 
+				"Queensland Firebirds", "West Coast Fever", "Canterbury Tactix", "Central Pulse", "Northern Mystics", "Southern Steel", "Waikato Bay of Plenty Magic"];
+
+function drawGraph(teamName) {
+	drawLine()
+	for (var i = 0; i < teamName.length; i++) {
+		drawImg(0.1*windHeight, 0.1*windWidth, 100, i*50, "resources/" + teamName[i] + ".png");
+	}
+}
+
+function getTotalScores(data) {
+}
+
+function drawRect(width, height, x, y, color){
+	return canvas.append*("rect")
+		.attr("width", width)
+		.attr("height", height)
+		.attr("x", x)
+		.attr("y", y)
+		.attr("color", color);
+}
+
+function drawLine(x1, x2, y1. y2, color){
+	return canvas.append*("line")
+		.attr("x1", x1)
+		.attr("x2", x2)
+		.attr("y1", y1)
+		.attr("y2", y2)
+		.attr("color", color);
+}
+
+function drawImg(width, height, x, y, imgLink){
+	return canvas.append("image")
+		.attr("width", width)
+		.attr("height", height)
+		.attr("x", x)
+		.attr("y", y)
+		.attr("xlink:href", imgLink);
+}
+
+
+
+var canvas = initialiseCanvas();
+drawGraph(teams);
+
 	  </script>
     </body>
 </html>
