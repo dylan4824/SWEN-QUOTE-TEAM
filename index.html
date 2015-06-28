@@ -209,7 +209,7 @@ function readYear (i){
  function assign(table){
   tableData.push(table)
   if(tableData.length == 6){
-    allLocations()
+//    allLocations()
   }
  }
 
@@ -224,7 +224,7 @@ function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
 
 }
 
-function allLocations (){
+/*function allLocations (){
   var allLoc = new Array();
   for (var i = 0; i < tableData.length; i++) {
     for (var j = 0; i < tableData[i].length; j++) {
@@ -244,7 +244,7 @@ function contains (loc,table){
   }
   return false
 }
-
+*/
 var windowSize = window;
 var windWidth = windowSize.innerWidth;
 var windHeight = windowSize.innerHeight;
@@ -257,7 +257,7 @@ function initialiseCanvas() {
 		.attr("height", windHeight*0.6);
 }
 
-var teams = ["Adelaide Thunderbirds", "Melbourne Vixens", "New South Wales Swifts", 
+var teams = ["Adelaide Thunderbirds", "Melbourne Vixens", "New South Wales Swifts",
 				"Queensland Firebirds", "West Coast Fever", "Canterbury Tactix", "Central Pulse", "Northern Mystics", "Southern Steel", "Waikato Bay of Plenty Magic"];
 
 function drawGraph(teamName) {
@@ -279,7 +279,7 @@ function drawRect(width, height, x, y, color){
 		.attr("color", color);
 }
 
-function drawLine(x1, x2, y1. y2, color){
+function drawLine(x1, x2, y1, y2, color){
 	return canvas.append*("line")
 		.attr("x1", x1)
 		.attr("x2", x2)
