@@ -1,70 +1,145 @@
 <html>
   <head>
-    <title>The Name of a Thing</title>
+    <title>NEETball analysis</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <!--<script src="jquery-2.1.4.min.js" charset="utf-8"></script>-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
     <body>
-      <div class="dropdown" align="center">
-	<button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">
-	  Round
-	  <span class="caret"</span></button>
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu2" type="button" data-toggle="dropdown">
-	  Season
-	  <span class="caret"</span></button>
+	    <table align="center">
+	    	<tr>
+	    		<td class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+			    	Round
+			    	<span class="caret">
+			    	</span>
+			    </button>
+			    <ul class="dropdown-menu " role="menu1" aria-labelledby="menu1">
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">11</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">12</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">13</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">14</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">15</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">16</a></li>
+			      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">17</a></li>
+			    </ul>
+			</td>
+			<!--------------------------------------------->
+			<td class="dropdown">
+		    	<button class="btn btn-default dropdown-toggle" type="button" id="menu2" data-toggle="dropdown">
+		    		Season
+		    		<span class="caret">
+		    		</span>
+			    </button>
+			    <ul class="dropdown-menu" role="menu2" aria-labelledby="menu2">
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2008</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2009</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2010</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2011</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2012</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">2013</a></li>
+			    </ul>
+			</td>
+			  <!--------------------------------------------->
+			  <td class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu4" data-toggle="dropdown">
+			    	Home Team
+			    	<span class="caret">
+			    	</span>
+			    </button>
+			    <ul class="dropdown-menu" role="menu4" aria-labelledby="menu4">
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Northern Mystics</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Queensland Firebirds</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Southern Steel</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Canturybury Tactix</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Melbourne Vixens</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Central Pulse</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Adelaide Thunderbirds</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Waikato Bay of Plenty Magic</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">West Coast Fever</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">New South Wales Swifts</a></li>
+			    </ul>
+			</td>
+			  <!--------------------------------------------->
+			  <td class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu5" data-toggle="dropdown">
+			    	Away Team
+			    	<span class="caret">
+			    	</span>
+			    </button>
+			    <ul class="dropdown-menu" role="menu5" aria-labelledby="menu5">
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Northern Mystics</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Queensland Firebirds</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Southern Steel</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Canturybury Tactix</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Melbourne Vixens</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Central Pulse</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Adelaide Thunderbirds</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Waikato Bay of Plenty Magic</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">West Coast Fever</a></li>
+			    	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">New South Wales Swifts</a></li>
+			    </ul>
+			</td>
+			<!--------------------------------------------->
+			  <td class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu8" data-toggle="dropdown">
+			    	Venue
+			    	<span class="caret">
+			    	</span>
+			    </button>
+			    <ul class="dropdown-menu" role="menu8" aria-labelledby="menu8">
+			    
+			    </ul>
+			</td>
+			  <!--------------------------------------------->
+			  <td class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu9" data-toggle="dropdown">
+			    	Overtime
+			    	<span class="caret">
+			    	</span>
+			    </button>
+			    <ul class="dropdown-menu" role="menu9" aria-labelledby="menu9">
+			    	
+			    </ul>
+			</td>
+			    	<!--------------------------------------------->
+			    	<td class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu10" data-toggle="dropdown">
+			    	Wins
+			    	<span class="caret">
+			    	</span>
+			    </button>
+			    <ul class="dropdown-menu" role="menu11" aria-labelledby="menu10">
+			    
+			    </ul>
+			</td>
+			  <!--------------------------------------------->
+			  <td class="dropdown">
+			    <button class="btn btn-default dropdown-toggle" type="button" id="menu11" data-toggle="dropdown">
+			    	Losses
+			    	<span class="caret">
+			    	</span>
+			    </button>
+			    <ul class="dropdown-menu" role="menu11" aria-labelledby="menu11">
+			    
+			    </ul>
+			</td>
+		</tr>
+	</table>
 
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu3" type="button" data-toggle="dropdown">
-	  Time
-	  <span class="caret"</span></button>
-
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu4" type="button" data-toggle="dropdown">
-	  Home Team
-	  <span class="caret"</span></button>
-		
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu5" type="button" data-toggle="dropdown">
-	  Away Team
-	  <span class="caret"</span></button>
-
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu6" type="button" data-toggle="dropdown">
-	  Home Score
-	  <span class="caret"</span></button>
-
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu7" type="button" data-toggle="dropdown">
-	  Away Score
-	  <span class="caret"</span></button>
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu8" type="button" data-toggle="dropdown">
-	  Venue
-	  <span class="caret"</span></button>
-
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu9" type="button" data-toggle="dropdown">
-	  Overtime
-	  <span class="caret"</span></button>
-
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu10" type="button" data-toggle="dropdown">
-	  Wins
-	  <span class="caret"</span></button>
-
-	<!------------------------------------->
-	<button class="btn btn-primary dropdown-toggle" id="menu11" type="button" data-toggle="dropdown">
-	  Losses
-	  <span class="caret",</span></button>		
-		
-</div>
-      
 	<script>
-    console.log("hello")
 var tables = ["2008-Table1.csv",
 	      "2009-Table1.csv",
 	      "2010-Table1.csv",
@@ -115,54 +190,6 @@ function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
 
 }
 
-function addMenuItems(){
-    //magic number city, if a new menu item is added or removed this will need to be changed
-    for (var i = 1; i < 12;i++){
-		populateCurrentMenu(i,document.getElementById("menu"+i))
-    }
-}
-
-function populateCurrentMenu (i, menu){
-    switch (i) {
-    case 1:
-	menuOne(menu)
-	break;
-    case 2:
-	menuTwo(getSeasons, menu)
-	break;
-    case 3:
-	menuThree(getTime,menu)
-	break;
-    case 4:
-	menuFour(getListOfTeams, menu)
-	break;
-    case 5:
-	menuFive(getListOfTeams, menu)
-	break;
-    case 6:
-	menuSix(getListOfHomeScores, menu)
-	break;
-    case 7:
-	menuSeven(getListOfAwayScores, menu)
-	break;
-    case 8:
-	menuEight(getListOfVenues, menu)
-	break;
-    case 9:
-	menuNine(menu)
-	break;
-    case 10:
-	menuTen(menu)
-	break;
-    case 11:
-	menuEleven(menu)
-	break;
-    }
-}
-function getListOfTeams() {}
-
-function menuOne(teams, menu){}
-	
 	  </script>
     </body>
 </html>
