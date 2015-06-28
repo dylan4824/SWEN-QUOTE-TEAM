@@ -190,9 +190,10 @@ function readYear (i){
 				AwayTeam: d['Away Team'],
 				HomeScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0],
 				AwayScore: d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1],
-				Overtime: ((d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[3]) != null),
+				Overtime:  d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[3] != null,
 				Venue: d.Venue,
-				Winner: winner(d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1], d['Home Team'], d['Away Team'])
+				Winner: winner(d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[0], d.Score.match(/^\d+|\d+\b|\d+(?=\w)/g)[1], d['Home Team'], d['Away Team']),
+        Disabled: false
 			};
 		}
     },function(error, table){
@@ -209,6 +210,9 @@ function readYear (i){
 function winner(HomeScore, AwayScore, HomeTeam, AwayTeam){
   if(HomeScore > AwayScore){
     return HomeTeam
+  }
+  else if (HomeScore == AwayScore) {
+    return null
   }
   return AwayTeam
 
